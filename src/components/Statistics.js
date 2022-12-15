@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Statistics({ state, total, positivePercentage }) {
   const { good, neutral, bad } = state;
   return (
@@ -53,6 +55,23 @@ function Section({
       />
     </>
   );
+}
+
+Section.propTypes = {
+    title: PropTypes.string.isRequired,
+    state: PropTypes.shape({
+        good: PropTypes.number.isRequired,
+        neutral: PropTypes.number.isRequired,
+        bad: PropTypes.number.isRequired
+    }),
+    options: PropTypes.arrayOf(PropTypes.string),
+    total: PropTypes.func.isRequired,
+    positivePercentage: PropTypes.func.isRequired,
+    onLeaveFeedback: PropTypes.shape({
+        Good: PropTypes.func.isRequired,
+        Neutral: PropTypes.func.isRequired,
+        Bad: PropTypes.func.isRequired
+    })
 }
 
 export default Section;
