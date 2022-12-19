@@ -8,7 +8,6 @@ export const App = () => {
     bad: 0,
   });
 
-
   const handleState = option => {
     let {good, bad, neutral} = state;
     
@@ -16,8 +15,9 @@ export const App = () => {
       case 'good': good += 1;break;
       case 'neutral': neutral += 1;break;
       case 'bad': bad += 1; break;
+      default: break;
     }
-    setState({good, bad, neutral})
+    setState({good, bad, neutral});
   };
 
   const countTotalFeedBack = () => {

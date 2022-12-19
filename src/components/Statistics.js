@@ -6,18 +6,24 @@ function Statistics({ state, total, positivePercentage }) {
     <>
       <p>Statistics</p>
       {good || neutral || bad ? (
-        <ul>
+        <StatisticsMessage good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage} />
+      ) : (
+        <NotificationMessage message="There is no feedback" />
+      )}
+    </>
+  );
+}
+
+function StatisticsMessage({good, neutral, bad, total, positivePercentage}){
+  return (
+    <ul>
           <li>Good: {good}</li>
           <li>Neutral: {neutral}</li>
           <li>Bad: {bad}</li>
           <li>Total: {total()}</li>
           <li>Positive feedback: {positivePercentage()}%</li>
         </ul>
-      ) : (
-        <NotificationMessage message="There is no feedback" />
-      )}
-    </>
-  );
+  )
 }
 
 function NotificationMessage({ message }) {
@@ -63,15 +69,15 @@ Section.propTypes = {
         good: PropTypes.number.isRequired,
         neutral: PropTypes.number.isRequired,
         bad: PropTypes.number.isRequired
-    }),
-    options: PropTypes.arrayOf(PropTypes.string),
+    }).isRequired,
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
     total: PropTypes.func.isRequired,
     positivePercentage: PropTypes.func.isRequired,
     onLeaveFeedback: PropTypes.shape({
         Good: PropTypes.func.isRequired,
         Neutral: PropTypes.func.isRequired,
         Bad: PropTypes.func.isRequired
-    })
+    }).isRequired
 }
 
 export default Section;
