@@ -10,12 +10,15 @@ export function Section({
   onLeaveFeedback,
   positivePercentage,
 }) {
+  const { good, bad, neutral } = state;
   return (
     <>
       <h1>{title}</h1>
       <FeedbackOptions options={options} onLeaveFeedback={onLeaveFeedback} />
       <Statistics
-        state={state}
+        good={good}
+        neutral={neutral}
+        bad={bad}
         total={total}
         positivePercentage={positivePercentage}
       />

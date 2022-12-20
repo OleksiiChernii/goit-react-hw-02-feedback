@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import { NotificationMessage } from './NotificationMessage';
 
-export function Statistics({ state, total, positivePercentage }) {
-  const { good, neutral, bad } = state;
+export function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
     <>
       <p>Statistics</p>
@@ -22,11 +21,9 @@ export function Statistics({ state, total, positivePercentage }) {
 }
 
 Statistics.propTypes = {
-  state: PropTypes.shape({
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-  }).isRequired,
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
   total: PropTypes.func.isRequired,
   positivePercentage: PropTypes.func.isRequired,
 };
