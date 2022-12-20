@@ -39,4 +39,3 @@ Section.propTypes = {
     Bad: PropTypes.func.isRequired,
   }).isRequired,
 };
-
