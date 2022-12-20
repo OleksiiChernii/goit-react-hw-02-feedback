@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Section from './Statistics';
+import { Section } from './Section';
 
 export const App = () => {
   const [state, setState] = useState({
