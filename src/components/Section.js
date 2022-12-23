@@ -1,44 +1,15 @@
 import PropTypes from 'prop-types';
-import { FeedbackOptions } from './FeedbackOptions';
-import { Statistics } from './Statistics';
 
-export function Section({
-  title,
-  state,
-  options,
-  total,
-  onLeaveFeedback,
-  positivePercentage,
-}) {
-  const { good, bad, neutral } = state;
+export function Section({ title, children }) {
   return (
     <>
       <h1>{title}</h1>
-      <FeedbackOptions options={options} onLeaveFeedback={onLeaveFeedback} />
-      <Statistics
-        good={good}
-        neutral={neutral}
-        bad={bad}
-        total={total}
-        positivePercentage={positivePercentage}
-      />
+      {children}
     </>
   );
 }
 
 Section.propTypes = {
   title: PropTypes.string.isRequired,
-  state: PropTypes.shape({
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-  }).isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  total: PropTypes.func.isRequired,
-  positivePercentage: PropTypes.func.isRequired,
-  onLeaveFeedback: PropTypes.shape({
-    Good: PropTypes.func.isRequired,
-    Neutral: PropTypes.func.isRequired,
-    Bad: PropTypes.func.isRequired,
-  }).isRequired,
+  children: PropTypes.object.isRequired
 };

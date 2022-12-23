@@ -4,8 +4,7 @@ import { NotificationMessage } from './NotificationMessage';
 export function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
     <>
-      <p>Statistics</p>
-      {good || neutral || bad ? (
+      {total() ? (
         <ul>
           <li>Good: {good}</li>
           <li>Neutral: {neutral}</li>
