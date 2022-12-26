@@ -12,8 +12,6 @@ export class App extends Component {
     bad: 0,
   };
 
-  options = ['Good', 'Neutral', 'Bad'];
-
   countTotalFeedBack = () => {
     const { good, bad, neutral } = this.state;
     return good + bad + neutral;
@@ -22,7 +20,7 @@ export class App extends Component {
   handleState = option => {
     let { good, bad, neutral } = this.state;
 
-    switch (option.toLowerCase()) {
+    switch (option) {
       case 'good':
         good += 1;
         break;
@@ -49,7 +47,7 @@ export class App extends Component {
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.options}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.handleState}
           />
         </Section>
